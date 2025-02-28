@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Task, TASK_STATUS_OPTIONS, TaskStatus, TaskStatusOptionsType } from '../../task.model';
 import { TasksService } from '../../tasks.service';
+import { TaskServiceToken } from '../../../../main';
 
 @Component({
   selector: 'app-task-item',
@@ -12,7 +13,7 @@ import { TasksService } from '../../tasks.service';
   styleUrl: './task-item.component.css',
 })
 export class TaskItemComponent {
-  private taskService = inject(TasksService);
+  private taskService = inject<TasksService>(TaskServiceToken);
   task = input.required<Task>();
   taskStatusOptions = inject<TaskStatusOptionsType[]>(TASK_STATUS_OPTIONS)
 
